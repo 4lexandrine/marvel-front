@@ -1,0 +1,32 @@
+/* HEADER */
+
+header {
+  background-color: #202020;
+  width: 100%;
+  height: 60px;
+  color: white;
+}
+header .wrapper {
+  background-color: #202020;
+}
+header img {
+  width: 100px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+header input {
+  border: none;
+  width: 200px;
+  height: 35px;
+  border-radius: 5px;
+  margin-left: 50px;
+  padding-left: 10px;
+}
+nav {
+  width: 300px;
+}
+header a {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: bold;
+}
