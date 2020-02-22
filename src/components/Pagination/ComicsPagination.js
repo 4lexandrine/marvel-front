@@ -19,7 +19,6 @@ const ComicsPagination = ({ total, setComics }) => {
                             <button className="pagination-btn" onClick={async () => {
                                 const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics/?page=${page}&offset=${page * 100}`);
                                 // console.log(response.data);
-
                                 setComics(response.data.results)
                             }}>{page}</button>
                         </li>
