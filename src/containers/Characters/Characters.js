@@ -8,7 +8,6 @@ import Search from "../../components/Search/Search";
 
 const Characters = () => {
 
-
     const [isLoading, setIsLoading] = useState(true);
     const [characters, setCharacters] = useState({});
     const [total, setTotal] = useState(0);
