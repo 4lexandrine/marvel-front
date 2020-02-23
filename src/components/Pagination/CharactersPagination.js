@@ -9,7 +9,7 @@ const Pagination = ({ total, setCharacters }) => {
         i === 0 ? pages.push(i + 1) :
             pages.push(i / 100 + 1);
     }
-
+    const limit = 100;
     return (
         <div>
             <ul className="pagination d-flex wrapper justify-center">
@@ -17,7 +17,7 @@ const Pagination = ({ total, setCharacters }) => {
                     return (
                         <li key={page}>
                             <button className="pagination-btn" onClick={async () => {
-                                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters/?page=${page}&offset=${page * 100}`);
+                                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?page=${page}&limit=${limit}&offset=${page * 100}`);
                                 setCharacters(response.data.results)
                             }}>{page}</button>
                         </li>

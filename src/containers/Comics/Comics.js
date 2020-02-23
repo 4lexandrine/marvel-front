@@ -12,20 +12,21 @@ const Comics = () => {
     const [comics, setComics] = useState({});
     const [total, setTotal] = useState(0);
     const [search, setSearch] = useState("");
+    const limit = 100;
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?page=1`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?limit=${limit}`);
             setTotal(response.data.total);
             setComics(response.data.results);
             setIsLoading(false);
         }
 
         const fetchSearchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?nameStartsWith=${search}`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?nameStartsWith=${search}&limit=${limit}`);
             setTotal(response.data.total);
             setComics(response.data.results);
-            console.log(search);
+            // console.log(search);
 
             setIsLoading(false);
         }

@@ -10,10 +10,12 @@
   margin: 20px 0;
 }
 
-.character-comics img {
+.character-comics > img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   object-position: center;
   margin-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(1, 1, 1, 0.5);
 }

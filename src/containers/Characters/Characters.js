@@ -8,20 +8,22 @@ import Search from "../../components/Search/Search";
 
 const Characters = () => {
 
+
     const [isLoading, setIsLoading] = useState(true);
     const [characters, setCharacters] = useState({});
     const [total, setTotal] = useState(0);
     const [search, setSearch] = useState("");
+    const limit = 100;
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?page=1`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?limit=${limit}`);
             setTotal(response.data.total);
             setCharacters(response.data.results);
             setIsLoading(false);
         }
         const fetchSearchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?nameStartsWith=${search}`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?nameStartsWith=${search}?limit=${limit}`);
             setTotal(response.data.total);
             setCharacters(response.data.results);
 

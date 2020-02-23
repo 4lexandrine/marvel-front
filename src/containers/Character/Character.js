@@ -4,18 +4,21 @@ import axios from "axios";
 import "./Character.css";
 
 import "../../components/Card/Card.css";
+import Helmet from "react-helmet";
 
 const Character = () => {
     const { id } = useParams();
     const location = useLocation();
 
-    const { character, name, thumbnail } = location.state;
+    const { name, thumbnail } = location.state;
     const [isLoading, setIsLoading] = useState(true);
+    const [characterComics, setCharacterComics] = useState();
+    const limit = 100;
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters/character/${id}?`);
-            console.log(response);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters/${id}/comics?limit=${limit}`);
+            setCharacterComics(response.data.results);
             setIsLoading(false);
         }
 
@@ -24,21 +27,26 @@ const Character = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Character's Comics</title>
+            </Helmet>
             {isLoading ? "En cours de chargement" :
-
-                < div className="wrapper character-comics d-flex flex-column align-center" >
-                    <h2>Comics Dans lequel apparaît {name}</h2>
-                    <img src={thumbnail} alt={name} />
-                    <ul >
-                        {character.map(item => {
-                            return (
-                                <li key={item} className="d-flex align-center flex-column"><h3>
-                                    {item}
-                                </h3></li>
-                            )
-                        })}
-                    </ul>
-                </div>
+                <section>
+                    < div className="wrapper character-comics d-flex flex-column align-center" >
+                        <h2>Comics Dans lequel apparaît {name}</h2>
+                        <img src={thumbnail} alt={name} />
+                        <div className="wrapper d-flex wrap justify-center bg">
+                            {characterComics.map(comic => {
+                                return (
+                                    <div key={comic.id} className="card d-flex flex-column align-center">
+                                        <img src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt="" />
+                                        <h2>{comic.title}</h2>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </section>
             }
         </>
     );

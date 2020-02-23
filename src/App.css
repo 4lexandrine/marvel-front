@@ -5,10 +5,12 @@ body {
 }
 section {
   background-color: #f11e22;
+  min-height: 100vh;
 }
 .wrapper {
   width: 1074px;
   margin: 0 auto;
+  border-radius: 5px;
 }
 .bg {
   background-color: #ffffff;

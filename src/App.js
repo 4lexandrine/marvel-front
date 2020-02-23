@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/characters">
           <Characters />
         </Route>
-        <Route path="/characters/character/:id">
+        <Route path="/characters/:id">
           <Character />
         </Route>
         <Route path="/comics">
