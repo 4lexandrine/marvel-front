@@ -17,7 +17,7 @@ const Character = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters/${id}/comics?limit=${limit}`);
+            const response = await axios.get(`https://marvel-back-api.herokuapp.com/characters/${id}/comics?limit=${limit}`);
             setCharacterComics(response.data.results);
             setIsLoading(false);
         }

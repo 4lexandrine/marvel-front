@@ -6,7 +6,6 @@ import ComicsPagination from "../../components/Pagination/ComicsPagination";
 import ComicCard from "../../components/Card/ComicCard";
 import Search from "../../components/Search/Search";
 
-
 const Comics = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [comics, setComics] = useState({});
@@ -16,14 +15,14 @@ const Comics = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?limit=${limit}`);
+            const response = await axios.get(`https://marvel-back-api.herokuapp.com/comics?limit=${limit}`);
             setTotal(response.data.total);
             setComics(response.data.results);
             setIsLoading(false);
         }
 
         const fetchSearchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/comics?nameStartsWith=${search}&limit=${limit}`);
+            const response = await axios.get(`https://marvel-back-api.herokuapp.com/comics?nameStartsWith=${search}&limit=${limit}`);
             setTotal(response.data.total);
             setComics(response.data.results);
             // console.log(search);

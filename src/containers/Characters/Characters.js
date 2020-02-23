@@ -16,13 +16,13 @@ const Characters = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?limit=${limit}`);
+            const response = await axios.get(`https://marvel-back-api.herokuapp.com/characters?limit=${limit}`);
             setTotal(response.data.total);
             setCharacters(response.data.results);
             setIsLoading(false);
         }
         const fetchSearchData = async () => {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?nameStartsWith=${search}?limit=${limit}`);
+            const response = await axios.get(`https://marvel-back-api.herokuapp.com/characters?nameStartsWith=${search}?limit=${limit}`);
             setTotal(response.data.total);
             setCharacters(response.data.results);
 

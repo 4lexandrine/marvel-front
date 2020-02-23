@@ -17,7 +17,7 @@ const Pagination = ({ total, setCharacters }) => {
                     return (
                         <li key={page}>
                             <button className="pagination-btn" onClick={async () => {
-                                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/characters?page=${page}&limit=${limit}&offset=${page * 100}`);
+                                const response = await axios.get(`https://marvel-back-api.herokuapp.com/characters?page=${page}&limit=${limit}&offset=${page * 100}`);
                                 setCharacters(response.data.results)
                             }}>{page}</button>
                         </li>
