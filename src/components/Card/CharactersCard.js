@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 import "./Card.css";
 
@@ -18,7 +18,7 @@ const Card = ({ character }) => {
             }} />
 
             <h2>{character.name}<span><FontAwesomeIcon icon="star" onClick={() => {
-                const cookie = Cookies.set("favorite", character.name, { expires: 7 })
+                // const cookie = Cookies.set("favorite", character.name, { expires: 7 })
                 // console.log(cookie);
             }} /></span></h2>
             <p>{character.description}</p>
